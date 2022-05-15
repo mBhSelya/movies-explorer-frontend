@@ -11,7 +11,13 @@ export default function SearchForm() {
                     <div className='search-form__input-field'>
                         <div className='search-form__icon-and-input'>
                             <img alt='Иконка лупы' className="search-form__icon" src={magnifyingGlass}></img>
-                            <input className='search-form__input' placeholder='Фильмы'></input>
+                            <input className='search-form__input'
+                                placeholder='Фильмы' 
+                                type="text" 
+                                minLength="1"
+                                maxLength="30"
+                                required>
+                            </input>
                         </div>
                         <button className='search-form__button' type='button'></button>
                     </div>

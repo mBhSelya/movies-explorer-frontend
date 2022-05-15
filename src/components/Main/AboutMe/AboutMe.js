@@ -14,8 +14,8 @@ export default function AboutMe() {
                             <span className='about-me__history'>Я родился в п.Кадуй, живу в Санкт-Петербурге, закончил Политехнический колледж "Информатизации и управления". Я люблю слушать музыку и активно проводить время. Недавно начал кодить. Очень хочется попасть в сферу разработки.</span>
                         </div>
                         <div className='about-me__links'>
-                            <a className='about-me__link' href=' '>Вконтакте</a>
-                            <a className='about-me__link' href=' '>Instagram</a>
+                            <a className='about-me__link' href='https://vk.com/id5326852' target="_blank" rel="noopener noreferrer">Вконтакте</a>
+                            <a className='about-me__link' href='https://www.instagram.com/_alosha' target="_blank" rel="noopener noreferrer">Instagram</a>
                         </div>
                     </div>
                     <img className='about-me__avatar' src={avatar} alt='Аватар'></img>

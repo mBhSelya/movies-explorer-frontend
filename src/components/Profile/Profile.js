@@ -12,12 +12,28 @@ export default function Profile() {
                 <h2 className="profile__greeting">Привет, Виталий</h2>
                 <div className="profile__counts">
                     <div className="profile__line">
-                        <span className="profile__count">Имя</span>
-                        <span className="profile__user-data">Виталий</span>
+                        <label className="profile__count" for="username">Имя</label>
+                        <input className="profile__user-data"
+                            id="username"
+                            type="text"
+                            value={'Виталий'}
+                            placeholder="Имя"
+                            minLength="1"
+                            maxLength="30"
+                            disabled>
+                        </input>
                     </div>
                     <div className="profile__line">
-                        <span className="profile__count">E-mail</span>
-                        <span className="profile__user-data">pochta@yandex.ru</span>
+                        <label className="profile__count" for="email">E-mail</label>
+                        <input className="profile__user-data"
+                            id="email"
+                            type="email"
+                            value={'pochta@yandex.ru'}
+                            placeholder="E-mail"
+                            minLength="1"
+                            maxLength="30"
+                            disabled>
+                        </input>
                     </div>
                 </div>
                 <button className="profile__button">Редактировать</button>

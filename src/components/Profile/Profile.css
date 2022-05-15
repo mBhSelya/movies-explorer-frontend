@@ -33,6 +33,23 @@
     line-height: 13px;
     padding: 0;
     margin: 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-align: end;
+    width: min-content;
+    width: calc(410px - 55px);
+    background-color: inherit;
+    color: black;
+}
+
+.profile__user-data:hover {
+    opacity: .6;
+}
+
+.profile__user-data:focus {
+    background-color: #f0f0f0;
+    opacity: .8;
 }
 
 .profile__line {
@@ -64,6 +81,13 @@
     color: #000000;
     margin: 0 0 16px;
     padding: 0;
+    cursor: pointer;
+    transition-timing-function: ease;
+    transition-duration: .3s;
+}
+
+.profile__button:hover {
+    opacity: .6;
 }
 
 .profile__button:last-of-type {
@@ -97,5 +121,9 @@
     .profile__button {
         font-size: 12px;
         line-height: 15px;
+    }
+
+    .profile__user-data {
+        width: calc(260px - 55px);
     }
 }

@@ -129,6 +129,7 @@
 @media screen and (max-width: 650px) {
     .techs {
         padding: 70px 0;
+        background-color: white;
     }
 
     .techs__width {

@@ -31,6 +31,14 @@
     justify-content: space-between;
     padding: 0 0 19px;
     margin: 0 0 20px;
+    text-decoration: none;
+    color: black;
+    transition-timing-function: ease;
+    transition-duration: .3s;
+}
+
+.portfolio__item:hover {
+    opacity: .6;
 }
 
 .portfolio__item:last-of-type {

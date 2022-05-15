@@ -56,7 +56,8 @@
     width: 366px;
     height: 46px;
     background-color: #F9F9F9;
-    border: none;
+    border: 0px solid rgb(240, 240, 240, 0);
+    box-sizing: border-box;
     border-radius: 8px;
     font-style: normal;
     font-weight: 400;
@@ -67,6 +68,16 @@
     outline: none;
     transition-duration: .3s;
     transition-timing-function: ease;
+}
+
+.login__input:hover {
+    opacity: .6;
+}
+
+.login__input:focus {
+    background-color: #f0f0f0;
+    border: 5px solid rgb(240, 240, 240, 1);
+    opacity: .8;
 }
 
 .login__input:last-of-type {
