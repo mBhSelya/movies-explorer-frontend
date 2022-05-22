@@ -29,7 +29,10 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 220px;
 }
 
 .card__duration {

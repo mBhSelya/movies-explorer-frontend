@@ -6,13 +6,14 @@ import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-export default function Main() {
+export default function Main(props) {
     
     return(
         <main className='main'>
             <Header 
                 dark={true}
-                isLoggenIn={false}
+                isLoggenIn={props.loggedIn}
+                returnToMovies={props.returnToMovies}
             />
             <Promo />
             <AboutProject />
