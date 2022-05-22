@@ -355,7 +355,7 @@ export default function App() {
                         resetForm={resetForm}
                     />
                 </Route>
-                <Route path="/error">
+                <Route path="/">
                     <Error />
                 </Route>
             </Switch>
