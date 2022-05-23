@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "movies",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -37,5 +37,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "Ссылка на фронтенд часть: https://diplom.mhselya.nomoredomains.work",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mBhSelya/movies-explorer-frontend.git"
+  },
+  "author": "Aleksey Selyakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mBhSelya/movies-explorer-frontend/issues"
   }
 }
