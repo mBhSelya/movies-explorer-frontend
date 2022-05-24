@@ -9,7 +9,7 @@ import Login from '../Login/Login';
 import Error from "../Error/Error";
 import { MoviesApiConfig } from "../../utils/MoviesApi";
 import * as Auth from "../../utils/Auth";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { ProtectedRoute, ProtectedRouteSign } from "../ProtectedRoute/ProtectedRoute";
 import { useFormWithValidation } from "../ValidationForm/Validation";
 import { ApiConfig } from "../../utils/MainApi";
 import { UserContext } from "../../context/CurrentUserContext";
@@ -340,28 +340,30 @@ export default function App() {
                         isValid={isValid}
                         resetForm={resetForm}
                     />
-                    <Route path="/signin">
-                        <Login 
-                            textError={textError}
-                            handleLogin={handleLogin}
-                            values={values}
-                            handleChange={handleChange}
-                            errors={errors}
-                            isValid={isValid}
-                            resetForm={resetForm}
-                        />
-                    </Route>
-                    <Route path="/signup">
-                        <Register 
-                            textError={textError}
-                            handleRegister={handleRegister}
-                            values={values}
-                            handleChange={handleChange}
-                            errors={errors}
-                            isValid={isValid}
-                            resetForm={resetForm}
-                        />
-                    </Route>
+                    <ProtectedRouteSign 
+                        path="/signin"
+                        loggedIn={loggedIn}
+                        component={Login}
+                        textError={textError}
+                        handleLogin={handleLogin}
+                        values={values}
+                        handleChange={handleChange}
+                        errors={errors}
+                        isValid={isValid}
+                        resetForm={resetForm}
+                    />
+                    <ProtectedRouteSign 
+                        path="/signup"
+                        loggedIn={loggedIn}
+                        component={Register}
+                        textError={textError}
+                        handleRegister={handleRegister}
+                        values={values}
+                        handleChange={handleChange}
+                        errors={errors}
+                        isValid={isValid}
+                        resetForm={resetForm}
+                    />
                     <Route path="/">
                         <Error />
                     </Route>
