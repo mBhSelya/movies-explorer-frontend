@@ -32,6 +32,7 @@ export default function App() {
     const [textError, setTextError] = useState('');
     const [saveCards, setSaveCards] = useState([]);
     const [shownSaveCards, setShownSaveCards] = useState([]);
+    const [userChecked, setUserChecked] = useState(false);
     const history = useHistory();
 
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
@@ -168,6 +169,7 @@ export default function App() {
                 setCurrentUser('');
                 tokenCheck();
                 resetForm();
+                history.push('/movies');
             })
             .catch((err) => {
                 handleTextError(err);
@@ -179,11 +181,12 @@ export default function App() {
         Auth.getContent()
             .then((res) => {
                 setLoggedIn(true);
+                setUserChecked(true);
                 setCurrentUser(res.data[0]);
-                history.push('/movies');
             })
             .catch((err) => {
                 console.log(err.status);
+                setUserChecked(true);
             })
     }
 
@@ -286,82 +289,84 @@ export default function App() {
     
     return(
         <UserContext.Provider value={currentUser}>
-            <Switch>
-                <Route exact path="/">
-                    <Main 
+            {userChecked &&
+                <Switch>
+                    <Route exact path="/">
+                        <Main 
+                            loggedIn={loggedIn}
+                        />
+                    </Route>
+                    <ProtectedRoute 
+                        path="/movies"
                         loggedIn={loggedIn}
+                        component={Movies}
+                        searchNameMovie={searchNameMovie}
+                        setSearchNameMovie={setSearchNameMovie}
+                        shortMovie={shortMovie}
+                        setShortMovie={handleShortMovie}
+                        shownCards={shownCards}
+                        onSubmit={showMovies}
+                        more={buttonMore}
+                        showMore={showMore}
+                        messageActive={messageActive}
+                        messageCards={messageCards}
+                        isLoading={isLoading}
+                        returnToMovies={returnToMovies}
+                        handleLikeMovies={handleLikeMovies}
+                        saveCards={saveCards}
                     />
-                </Route>
-                <ProtectedRoute 
-                    path="/movies"
-                    loggedIn={loggedIn}
-                    component={Movies}
-                    searchNameMovie={searchNameMovie}
-                    setSearchNameMovie={setSearchNameMovie}
-                    shortMovie={shortMovie}
-                    setShortMovie={handleShortMovie}
-                    shownCards={shownCards}
-                    onSubmit={showMovies}
-                    more={buttonMore}
-                    showMore={showMore}
-                    messageActive={messageActive}
-                    messageCards={messageCards}
-                    isLoading={isLoading}
-                    returnToMovies={returnToMovies}
-                    handleLikeMovies={handleLikeMovies}
-                    saveCards={saveCards}
-                />
-                <ProtectedRoute 
-                    path="/saved-movies"
-                    loggedIn={loggedIn}
-                    component={SavedMovies}
-                    searchNameMovie={searchNameMovie}
-                    setSearchNameMovie={setSearchNameMovie}
-                    shortMovie={shortMovie}
-                    setShortMovie={handleShortMovie}
-                    handleLikeMovies={handleLikeMovies}
-                    saveCards={shownSaveCards}
-                    onSubmit={filterSavedMovies}
-                    messageActive={messageActive}
-                    messageCards={messageCards}
-                />
-                <ProtectedRoute 
-                    path="/profile"
-                    loggedIn={loggedIn}
-                    component={Profile}
-                    editUser={editUser}
-                    logOut={logOut}
-                    handleChange={handleChange}
-                    errors={errors}
-                    isValid={isValid}
-                    resetForm={resetForm}
-                />
-                <Route path="/signin">
-                    <Login 
-                        textError={textError}
-                        handleLogin={handleLogin}
-                        values={values}
+                    <ProtectedRoute 
+                        path="/saved-movies"
+                        loggedIn={loggedIn}
+                        component={SavedMovies}
+                        searchNameMovie={searchNameMovie}
+                        setSearchNameMovie={setSearchNameMovie}
+                        shortMovie={shortMovie}
+                        setShortMovie={handleShortMovie}
+                        handleLikeMovies={handleLikeMovies}
+                        saveCards={shownSaveCards}
+                        onSubmit={filterSavedMovies}
+                        messageActive={messageActive}
+                        messageCards={messageCards}
+                    />
+                    <ProtectedRoute 
+                        path="/profile"
+                        loggedIn={loggedIn}
+                        component={Profile}
+                        editUser={editUser}
+                        logOut={logOut}
                         handleChange={handleChange}
                         errors={errors}
                         isValid={isValid}
                         resetForm={resetForm}
                     />
-                </Route>
-                <Route path="/signup">
-                    <Register 
-                        textError={textError}
-                        handleRegister={handleRegister}
-                        values={values}
-                        handleChange={handleChange}
-                        errors={errors}
-                        isValid={isValid}
-                        resetForm={resetForm}
-                    />
-                </Route>
-                <Route path="/">
-                    <Error />
-                </Route>
-            </Switch>
+                    <Route path="/signin">
+                        <Login 
+                            textError={textError}
+                            handleLogin={handleLogin}
+                            values={values}
+                            handleChange={handleChange}
+                            errors={errors}
+                            isValid={isValid}
+                            resetForm={resetForm}
+                        />
+                    </Route>
+                    <Route path="/signup">
+                        <Register 
+                            textError={textError}
+                            handleRegister={handleRegister}
+                            values={values}
+                            handleChange={handleChange}
+                            errors={errors}
+                            isValid={isValid}
+                            resetForm={resetForm}
+                        />
+                    </Route>
+                    <Route path="/">
+                        <Error />
+                    </Route>
+                </Switch>
+            }
         </UserContext.Provider>
 
     )
