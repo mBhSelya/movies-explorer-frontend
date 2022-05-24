@@ -321,6 +321,8 @@ export default function App() {
                     handleLikeMovies={handleLikeMovies}
                     saveCards={shownSaveCards}
                     onSubmit={filterSavedMovies}
+                    messageActive={messageActive}
+                    messageCards={messageCards}
                 />
                 <ProtectedRoute 
                     path="/profile"

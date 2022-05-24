@@ -27,6 +27,8 @@ export default function SavedMovies(props) {
                 more={false}
                 saveCards={props.saveCards}
                 handleLikeMovies={props.handleLikeMovies}
+                messageActive={props.messageActive}
+                messageCards={props.messageCards}
             />
             <Footer />
         </>
