@@ -35,6 +35,10 @@ export default function Profile(props) {
     }, [userData]);
 
     useEffect(() => {
+        console.log(props.isValid);
+        console.log(name);
+        console.log(email);
+        console.log(name === userData.name & email === userData.name & !props.isValid)
         if (name === userData.name & email === userData.name & !props.isValid) {
             setChangedData(true);
         } else {
