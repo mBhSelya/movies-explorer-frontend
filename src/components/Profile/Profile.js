@@ -35,12 +35,12 @@ export default function Profile(props) {
     }, [userData]);
 
     useEffect(() => {
-        if (name === userData.name & email === userData.name) {
-            setChangedData(false);
-        } else {
+        if (name === userData.name & email === userData.name & !props.isValid) {
             setChangedData(true);
+        } else {
+            setChangedData(false);
         }
-    }, [name, email, userData])
+    }, [name, email, userData, props.isValid])
 
     function handleSaveDataUser(event) {
         event.preventDefault()
@@ -91,7 +91,7 @@ export default function Profile(props) {
                     </div>
                     <span className="profile__error profile__error_submit">{textError}</span>
                 </div>
-                <button type="submit" onClick={handleSaveDataUser} className={`profile__save-button ${isEdit && 'profile__save-button_active'} ${!props.isValid & changedData && 'profile__save-button_disabled'}`} disabled={!props.isValid & !changedData ? true : false}>Сохранить</button>
+                <button type="submit" onClick={handleSaveDataUser} className={`profile__save-button ${isEdit && 'profile__save-button_active'} ${changedData && 'profile__save-button_disabled'}`} disabled={changedData}>Сохранить</button>
                 <button type="button" onClick={handleIsEdit} className={`profile__cancel ${isEdit && 'profile__cancel_active'}`}>Отмена</button>
                 <button type="button" onClick={handleIsEdit} className={`profile__button ${!isEdit && 'profile__button_active'}`}>Редактировать</button>
                 <button onClick={props.logOut} className={`profile__button ${!isEdit && 'profile__button_active'}`}>Выйти из аккаунта</button>
