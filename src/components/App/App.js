@@ -60,6 +60,7 @@ export default function App() {
     }
 
     function filterSavedMovies() {
+        setMessageActive(true);
         let filteredMovies = filterMovies(saveCards)
         setShownSaveCards(filteredMovies);
     }
