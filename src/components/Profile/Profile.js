@@ -38,8 +38,8 @@ export default function Profile(props) {
         console.log(props.isValid);
         console.log(name === userData.name);
         console.log(email === userData.email);
-        console.log(name === userData.name & email === userData.email & !props.isValid)
-        if (name === userData.name & email === userData.name & !props.isValid) {
+        console.log(name === userData.name && email === userData.email && !props.isValid)
+        if (name === userData.name && email === userData.name && !props.isValid) {
             setChangedData(true);
         } else {
             setChangedData(false);
