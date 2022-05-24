@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Header from "../Header/Header";
 import { UserContext } from "../../context/CurrentUserContext";
+import validator from 'validator';
 
 export default function Profile(props) {
     const userData = useContext(UserContext);
@@ -35,8 +36,7 @@ export default function Profile(props) {
     }, [userData]);
 
     useEffect(() => {
-        console.log(name === userData.name && email === userData.email)
-        console.log(!props.isValid);
+        console.log(validator.isEmail(email))
         if (name === userData.name && email === userData.email) {
             setChangedData(true);
         } else if (!props.isValid) {

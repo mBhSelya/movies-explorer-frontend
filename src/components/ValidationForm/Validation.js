@@ -25,10 +25,3 @@ export function useFormWithValidation() {
   
     return { values, handleChange, errors, isValid, resetForm };
 }
-
-/* export const ValidationForm = new useFormWithValidation({
-    baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}); */
