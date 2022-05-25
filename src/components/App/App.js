@@ -13,6 +13,19 @@ import { ProtectedRoute, ProtectedRouteSign } from "../ProtectedRoute/ProtectedR
 import { useFormWithValidation } from "../ValidationForm/Validation";
 import { ApiConfig } from "../../utils/MainApi";
 import { UserContext } from "../../context/CurrentUserContext";
+import { 
+        movieDuration, 
+        highResolution, 
+        mediumResolution, 
+        lowResolution, 
+        firstAmount, 
+        secondAmount, 
+        thirdAmount, 
+        fourthAmount, 
+        firstAmountNewMovies,
+        secondAmountNewMovies,
+        thirdAmountNewMovies 
+    } from "../../utils/constants";
 
 export default function App() {
     const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +68,7 @@ export default function App() {
     function filterMovies(Movies) {
         let filteredMovies = Movies.filter((movie) => movie.nameRU.toLowerCase().includes(searchNameMovie.toLowerCase()));
         if (shortMovie) {
-            filteredMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+            filteredMovies = filteredMovies.filter((movie) => movie.duration <= movieDuration);
         }
         return filteredMovies
     }
@@ -118,18 +131,18 @@ export default function App() {
     }
 
     function handleAmountMovies() {
-        if (windowWidth >= 1200) {
-            setAmountMovies(16);
-            setAmountNewCards(4);
-        } else if (1200 > windowWidth && windowWidth >= 910) {
-            setAmountMovies(9);
-            setAmountNewCards(3);
-        } else if (910 > windowWidth && windowWidth >= 768) {
-            setAmountMovies(8);
-            setAmountNewCards(2);
+        if (windowWidth >= highResolution) {
+            setAmountMovies(firstAmount);
+            setAmountNewCards(firstAmountNewMovies);
+        } else if (highResolution > windowWidth && windowWidth >= mediumResolution) {
+            setAmountMovies(secondAmount);
+            setAmountNewCards(secondAmountNewMovies);
+        } else if (mediumResolution > windowWidth && windowWidth >= lowResolution) {
+            setAmountMovies(thirdAmount);
+            setAmountNewCards(thirdAmountNewMovies);
         } else {
-            setAmountMovies(5);
-            setAmountNewCards(2);
+            setAmountMovies(fourthAmount);
+            setAmountNewCards(thirdAmountNewMovies);
         }
     }
 

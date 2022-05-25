@@ -1,0 +1,12 @@
+export const movieDuration = 40;
+export const highResolution = 1200;
+export const mediumResolution = 910;
+export const lowResolution = 768;
+export const firstAmount = 16;
+export const secondAmount = 9
+export const thirdAmount = 8;
+export const fourthAmount = 5;
+export const firstAmountNewMovies = 4;
+export const secondAmountNewMovies = 3
+export const thirdAmountNewMovies = 2;
+export const minutesInAnHour = 60;

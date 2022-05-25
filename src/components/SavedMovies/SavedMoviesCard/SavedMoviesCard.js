@@ -1,3 +1,4 @@
+import { minutesInAnHour } from "../../../utils/constants";
 
 export default function SavedMoviesCard(props) {
     let isLike;
@@ -41,7 +42,7 @@ export default function SavedMoviesCard(props) {
             <div className="saved-card__info">
                 <div>
                     <h2 className="saved-card__title">{props.dataCard.nameRU}</h2>
-                    <p className='saved-card__duration'>{`${Math.floor(props.dataCard.duration/60)}ч ${!(props.dataCard.duration%60 === 0) ? `${props.dataCard.duration%60}м` : ` `}`}</p>
+                    <p className='saved-card__duration'>{`${Math.floor(props.dataCard.duration/minutesInAnHour)}ч ${!(props.dataCard.duration%minutesInAnHour === 0) ? `${props.dataCard.duration%minutesInAnHour}м` : ` `}`}</p>
                 </div>
                 <button onClick={handleSaveCard} className={`saved-card__button ${isLike && 'saved-card__button_active'}`}></button>
             </div>
