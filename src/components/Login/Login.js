@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import validator from 'validator';
 
 export default function Login(props) {
+    const [errorEmail, setErrorEmail] = useState('');
+
+    useEffect(() => {
+        if (props.values.email) {
+            if (!validator.isEmail(props.values.email)) {
+                setErrorEmail('Некорректный Email');
+            } else {
+                setErrorEmail('');
+            }
+        }
+    }, [props.values.email])
 
     function handleLogin(event) {
         event.preventDefault();
@@ -22,8 +35,8 @@ export default function Login(props) {
                         placeholder="E-mail"
                         required>
                     </input>
-                    <span className="login__error login__error_email">{props.errors.email}</span>
-                    <p className={`login__field ${props.errors.email && 'login__field_margin'}`}>Пароль</p>
+                    <span className="login__error login__error_email">{props.errors.email || errorEmail}</span>
+                    <p className={`login__field ${props.errors.email || errorEmail ? 'login__field_margin' : ''}`}>Пароль</p>
                     <input className="login__input"
                         onChange={props.handleChange} 
                         type="password"

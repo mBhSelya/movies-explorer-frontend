@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react";
+import validator from 'validator';
 
 export default function Register(props) {
+    const [errorEmail, setErrorEmail] = useState('');
+
+    useEffect(() => {
+        if (props.values.email) {
+            if (!validator.isEmail(props.values.email)) {
+                setErrorEmail('Некорректный Email');
+            } else {
+                setErrorEmail('');
+            }
+        }
+    }, [props.values.email])
 
     function handleRegister(event) {
         event.preventDefault();
@@ -24,8 +37,8 @@ export default function Register(props) {
                         maxLength="30"
                         required>
                     </input>
-                    <span className="register__error register__error_name">{props.errors.name}</span>
-                    <p className={`register__field ${props.errors.name && 'register__field_margin'}`}>E-mail</p>
+                    <span className="register__error register__error_name">{props.errors.name || errorEmail}</span>
+                    <p className={`register__field ${props.errors.name || errorEmail ? 'register__field_margin' : ''}`}>E-mail</p>
                     <input className="register__input"
                         onChange={props.handleChange}
                         type="email"
