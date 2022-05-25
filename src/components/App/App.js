@@ -254,6 +254,7 @@ export default function App() {
 
     useEffect(() => { 
         tokenCheck();
+        setMessageActive(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -267,6 +268,7 @@ export default function App() {
         setShortMovie(searchOptions.shortMovie);
         setFoundMovies(searchOptions.foundMovies);
         showButtonMore(searchOptions.foundMovies);
+        setMessageActive(true);
     }
 
     function handleShortMovie() {
@@ -340,6 +342,7 @@ export default function App() {
                         saveCards={shownSaveCards}
                         onSubmit={filterSavedMovies}
                         messageActive={messageActive}
+                        setMessageActive={setMessageActive}
                         messageCards={messageCards}
                     />
                     <ProtectedRoute 

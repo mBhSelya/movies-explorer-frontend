@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 export default function Movies(props) {
 
     useEffect(() => {
+        props.setSearchNameMovie('')
         props.returnToMovies()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])

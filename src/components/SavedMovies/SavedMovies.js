@@ -8,6 +8,7 @@ export default function SavedMovies(props) {
     useEffect(() => {
         props.setSearchNameMovie('');
         props.shortMovie && props.setShortMovie(false);
+        props.setMessageActive(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return(
