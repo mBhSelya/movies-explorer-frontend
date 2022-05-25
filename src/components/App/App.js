@@ -323,6 +323,7 @@ export default function App() {
                         onSubmit={showMovies}
                         more={buttonMore}
                         showMore={showMore}
+                        setMessageActive={setMessageActive}
                         messageActive={messageActive}
                         messageCards={messageCards}
                         isLoading={isLoading}
