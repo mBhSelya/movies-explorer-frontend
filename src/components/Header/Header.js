@@ -47,7 +47,7 @@ export default function Header(props) {
                                         <Link onClick={closeBurgerMenu} to="/movies" className="header__menu-link">Фильмы</Link>
                                         <Link onClick={closeBurgerMenu} to="/saved-movies" className="header__menu-link">Сохранённые фильмы</Link>
                                     </div>
-                                    <Link to="/profile" className="header__account-button">
+                                    <Link onClick={closeBurgerMenu} to="/profile" className="header__account-button header__account-button_black">
                                         <img src={iconAccountBlack} className="header__icon-account" alt="Иконка аккаунта"></img>
                                         <span>Аккаунт</span>
                                     </Link>
