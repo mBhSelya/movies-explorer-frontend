@@ -37,8 +37,8 @@ export default function Register(props) {
                         maxLength="30"
                         required>
                     </input>
-                    <span className="register__error register__error_name">{props.errors.name || errorEmail}</span>
-                    <p className={`register__field ${props.errors.name || errorEmail ? 'register__field_margin' : ''}`}>E-mail</p>
+                    <span className="register__error register__error_name">{props.errors.name}</span>
+                    <p className={`register__field ${props.errors.name && 'register__field_margin'}`}>E-mail</p>
                     <input className="register__input"
                         onChange={props.handleChange}
                         type="email"
@@ -47,8 +47,8 @@ export default function Register(props) {
                         placeholder="E-mail"
                         required>
                     </input>
-                    <span className="register__error register__error_email">{props.errors.email}</span>
-                    <p className={`register__field ${props.errors.email && 'register__field_margin'}`}>Пароль</p>
+                    <span className="register__error register__error_email">{props.errors.email || errorEmail}</span>
+                    <p className={`register__field ${props.errors.email || errorEmail ? 'register__field_margin' : ''}`}>Пароль</p>
                     <input className="register__input" 
                         onChange={props.handleChange}
                         type="password"
