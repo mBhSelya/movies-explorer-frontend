@@ -10,6 +10,7 @@ export default function Profile(props) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [textError, setTextError] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
 
     function handleInputName(event) {
         setName(event.target.value);
@@ -36,13 +37,18 @@ export default function Profile(props) {
     }, [userData]);
 
     useEffect(() => {
-        console.log(validator.isEmail(email));
-        if (name === userData.name && email === userData.email) {
-            setChangedData(true);
-        } else if (!props.isValid) {
-            setChangedData(true);
-        } else {
-            setChangedData(false);
+        if (email) {
+            if (name === userData.name && email === userData.email) {
+                setChangedData(true);
+            } else if (!props.isValid) {
+                setChangedData(true);
+            } else if (!validator.isEmail(email)) {
+                setErrorEmail('Некорректный Email');
+                setChangedData(true);
+            } else {
+                setErrorEmail('');
+                setChangedData(false);
+            }
         }
     }, [name, email, userData, props.isValid])
 
@@ -91,7 +97,7 @@ export default function Profile(props) {
                                 disabled={!isEdit}>
                             </input>
                         </div>
-                        <span className="profile__error profile__error_email">{props.errors.email}</span>
+                        <span className="profile__error profile__error_email">{props.errors.email || errorEmail}</span>
                     </div>
                     <span className="profile__error profile__error_submit">{textError}</span>
                 </div>
